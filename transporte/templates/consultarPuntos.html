@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Consultar Puntos de Control
+{% endblock %}
+
+{% block header %}
+<h3>Lista de Puntos de Control</h3>
+{% endblock%}
+
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Selección</th>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Ubicación</th>
+            <th>Responsable</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if puntos %}
+        {% for puntos in puntos %}
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>{{ puntos.cod_punto }}</td>
+                <td>{{ puntos.nombre }}</td>
+                <td>{{ puntos.ubicacion }}</td>
+                <td>{{ puntos.responsable.cod_responsable }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <h3>No hay registros</h3>
+    {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}
