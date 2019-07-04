@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Unidades de Transporte
+{% endblock %}
+
+{% block header %}
+<h5>Seleccione la unidad para crear el registro</h5>
+{% endblock %}
+
+{% block content %}
+	<form method="post">
+		{% csrf_token %}
+		{{ formulario.as_p }}
+		<button type="submit">Seleccionar</button>
+	</form>
+{% endblock %}

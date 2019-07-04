@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Consultar Motoristas
+{% endblock %}
+
+{% block header %}
+<h3>Lista de Motoristas</h3>
+{% endblock %}
+
+{% block content %}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Selección</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if motoristas %}
+        {% for motoristas in motoristas %}
+            <tr>
+                <td>{{ motoristas.cod_motorista }}</td>
+                <td>{{ motoristas.nombres }}</td>
+                <td>{{ motoristas.apellidos }}</td>
+                <td>
+                    <a href="{% url 'consultarUnidades' unidad.id %}" class="btn btn-sm btn-primary">Asignar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <h3>No hay registros</h3>
+    {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

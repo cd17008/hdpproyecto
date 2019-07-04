@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Consultar Motoristas
+{% endblock %}
+
+{% block header %}
+<h3>Lista de Responsables</h3>
+{% endblock %}
+
+{% block content %}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Seleccion</th>
+            <th>Código</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+              <th>Dui</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if responsables %}
+        {% for responsables in responsables %}
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>{{ responsables.cod_responsable }}</td>
+                <td>{{ responsables.nombres }}</td>
+                <td>{{ responsables.apellidos }}</td>
+                <td>{{ responsables.dui }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <h3>No hay registros</h3>
+    {% endif %}
+    </tbody>
+</table>
+
+<button type="submit" class="btn btn-sm btn-primary">Asignar</button>
+{% endblock %}

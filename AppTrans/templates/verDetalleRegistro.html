@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Detalle Registro
+{% endblock%}
+
+{% block header %}
+Datos del Registro {{ registro.id }}
+{% endblock %}
+
+{% block content %}
+    <div class="panel-body">
+        <p><strong>Código: </strong>{{ registro.cod_registro }}</p>
+        <p><strong>Punto: </strong>{{ registro.punto }}</p>
+        <p><strong>Unidad: </strong>{{ registro.unidad }}</p>
+        <p><strong>Autor: </strong>{{ registro.responsable }}</p>
+        <p><strong>Fecha: </strong>{{ registro.fecha }}</p>
+        <p><strong>Hora: </strong>{{ registro.hora }}</p>
+        <p><strong>Pasajeros: </strong>{{ registro.num_pasajeros }}</p>
+        <p><strong>Dinero Entregado: </strong>{{ registro.cant_dinero }}</p>
+    </div>
+{% endblock %}

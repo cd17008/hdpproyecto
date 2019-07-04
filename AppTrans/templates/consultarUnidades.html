@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Consultar Unidades
+{% endblock %}
+
+{% block header %}
+<h3>Lista de Unidades de Transporte</h3>
+{% endblock %}
+
+{% block content %}
+
+    <table class="table table-bordered">
+        <thead>
+        	<tr>
+                <th>ID</th>
+				<th>Placa</th>
+				<th>Nombre Unidad</th>
+				<th>Motorista</th>
+                <th>Selección</th>
+			</tr>
+		</thead>
+		<tbody>
+        {% if unidades %}
+            {% for unidades in unidades %}
+                <tr>
+                	<td>{{ unidades.id }}</td>
+                	<td>{{ unidades.placa }}</td>
+                	<td>{{ unidades.nombre_mote }}</td>
+                    <td>{{ unidades.motorista }}</td>
+                    <td>
+                        <a href="{% url 'crearRegistro' unidades.id %}" class="btn btn-sm btn-primary">Crear Registro</a>
+                    </td>
+            	</tr>
+            {% endfor %}
+        {% else %}
+            <h4>No hay Unidades</h4>
+        {% endif %}
+    	</tbody>
+    </table>
+
+
+{% endblock %}

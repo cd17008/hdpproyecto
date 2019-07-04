@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Consultar Registros
+{% endblock %}
+
+{% block header %}
+<h3>Lista de Registros</h3>
+{% endblock %}
+
+{% block content %}
+
+    <table class="table table-bordered">
+        <thead>
+        	<tr>
+                <th>Código</th>
+				<th>Unidad</th>
+				<th>Fecha</th>
+				<th>Autor del Registro</th>
+                <th>Selección</th>
+			</tr>
+		</thead>
+		<tbody>
+        {% if registros %}
+            {% for registros in registros %}
+                <tr>
+                	<td>{{ registros.id }}</td>
+                	<td>{{ registros.unidad }}</td>
+                	<td>{{ registros.fecha }}</td>
+                    <td>{{ registros.responsable }}</td>
+                    <td>
+                        <a href="{% url 'verDetalleRegistro' registros.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
+                    </td>
+            	</tr>
+            {% endfor %}
+        {% else %}
+            <h1>No hay registros</h1>
+        {% endif %}
+    	</tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang=es>
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %} {% endblock %} </title>
+		<link rel="stylesheet" type="text/css" href="{% static 'AppTrans/freelancer.css' %}">
+	</head>
+	<body>
+		{% block header %}
+		<h4>Título</h4>
+		{% endblock %}
+
+		{% block content %}
+		<h4>Contenido</h4>
+		{% endblock %}
+
+		{% block footer %}
+		<h6>Grupo 14 HDP</h6>
+		{% endblock %}
+	</body>
+</html>
