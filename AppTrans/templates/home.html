@@ -1,19 +1,30 @@
-{% extends 'base/base.html' %}
-
-{% block title %}
-AppTrans
-{% endblock %}
-
-{% block header %}
-<h5>Adiós a los registros a mano, con AppTrans no necesita más que su móvil</h5>
-{% endblock %}
-
-{% block content %}
+{% load staticfiles %}
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Inicio</title>
+<link rel="stylesheet" type="text/css" href="{% static 'AppTrans/style.css' %}">
+</head>
+<body background="{% static 'AppTrans/imagen/otro.jpg' %}">
+		 <br><br>
+       <h1 class="h1">Sistema de Control de Unidades</h1>   
+      <br> 
+ 
+    	
+   <div class="form-title-row">
+    <nav>                      
 	<a href="consultarPuntos">Puntos de Control</a>
-	<br>
-	<a href="seleccionarUnidad">Nuevo Registro</a>
-	<br>
+	<a href="seleccionarUnidad" >Nuevo Registro</a>
 	<a href="consultarRegistros">Registros de Llegada</a>
-	<br>
-	<a href="crearRegistro">Nuevo Registro</a>
-{% endblock %}
+	<br><br><br><br><br>
+  </nav>
+   </div> 
+<h1 class="h1">Herramientas de Productividad</h1>
+<h1 class="h1">.........................................................</h1>
+	
+	
+
+
+</body>
+

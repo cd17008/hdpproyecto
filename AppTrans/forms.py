@@ -16,7 +16,7 @@ class FormularioRegistro(forms.ModelForm):
 
 		labels = {
 			'cod_registro':'Código del Registro',
-			'unidad':'Unidad de Transporte,'
+			'unidad':'Unidad de Transporte',
 			'punto':'Punto de Control',
 			#'responsable':'Responsable de Punto',
 			'num_pasajeros':'Cantidad de pasajeros (opcional)',
