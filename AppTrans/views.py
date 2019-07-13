@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from AppTrans.models import Motorista, RegistroLlegada, UnidadTransporte, PuntoControl
-from AppTrans.forms import FormularioRegistro, FormularioUnidades
+from AppTrans.forms import FormularioRegistro, FormularioUnidades, FormularioPuntos
 
 # Create your views here.
 
@@ -58,3 +58,15 @@ def seleccionarUnidad(request):
 def consultarResponsables(request):
 	responsables=ResponsablePunto.objects.all()
 	return render(request, 'consultarResponsables.html', {'responsables':responsables})
+
+def crearPuntos(request):
+	#unidad = UnidadTransporte.objects.get(id=id)
+	if request.method == 'POST':
+		formulario = FormularioRPuntos(request.POST)
+		if formulario.is_valid():
+			formulario.save()
+		return redirect('home')
+	else:
+		formulario = FormularioPuntos()
+
+	return render(request, 'crearPuntos.html', {'formulario':formulario})

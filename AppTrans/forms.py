@@ -1,5 +1,5 @@
 from django import forms
-from AppTrans.models import RegistroLlegada
+from AppTrans.models import RegistroLlegada,PuntoControl
 
 class FormularioRegistro(forms.ModelForm):
 	class Meta:
@@ -47,3 +47,26 @@ class FormularioUnidades(forms.ModelForm):
 		widgets = {
 			'unidad':forms.RadioSelect(),
 		}
+
+class FormularioPuntos(forms.ModelForm):
+	class Meta:
+		model = PuntoControl
+
+		fields = [
+			'cod_punto',
+			'ubicacion',
+			'responsable',
+		]
+
+		labels = {
+			'cod_punto':'Código del Punto',
+			'ubicacion':'Ubicacion del punto',
+			'responsable':'Responsable del punto',
+		}
+
+		widgets = {
+			'cod_punto':forms.TextInput(attrs={'class':'form-control'}),
+			'ubicacion':forms.TextInput(attrs={'class':'form-control'}),
+			'responsable':forms.Select(attrs={'class':'form-control'}),
+			}
+
