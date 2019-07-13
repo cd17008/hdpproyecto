@@ -1,25 +1,32 @@
 {% load staticfiles %}
+
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Inicio</title>
-<link rel="stylesheet" type="text/css" href="{% static 'AppTrans/style.css' %}">
+	<meta charset="utf-8">
+	<title>Inicio</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'AppTrans/style.css' %}">
 </head>
 <body background="{% static 'AppTrans/imagen/otro.jpg' %}">
-		 <br><br>
-       <h1 class="h1">Sistema de Control de Unidades</h1>   
-      <br> 
- 
+	<br><br>
+    <h1 class="h1">Sistema de Control de Unidades</h1>   
+    <br> 
     	
-   <div class="form-title-row">
-    <nav>                      
-	<a href="consultarPuntos">Puntos de Control</a>
-	<a href="seleccionarUnidad" >Nuevo Registro</a>
-	<a href="consultarRegistros">Registros de Llegada</a>
-	<a href="crearPuntos">Nuevo Punto de control</a>
-	<br><br><br><br><br>
-  </nav>
+    <div class="form-title-row">
+    	<nav>                      
+   			<a href="crearMotorista">Nuevo Motorista</a>
+			<a href="crearRegistro" >Nuevo Registro</a>
+			<a href="crearPuntos">Nuevo Punto de control</a>
+			<a href="crearResponsable">Nuevo Responsable de Punto</a>
+			<a href="crearUnidad">Nueva Unidad de Transporte</a>
+			<br><br><br><br><br>
+			<a href="consultarRegistros">Registros de Llegada</a>
+			<a href="consultarPuntos">Puntos de Control</a>
+			<a href="consultarMotoristas">Motoristas</a>
+			<a href="consultarResponsables">Responsables de Punto</a>
+			<a href="consultarUnidades">Unidades de Transporte</a>
+			<br><br><br><br><br>
+  		</nav>
    </div> 
 <h1 class="h1">Herramientas de Productividad</h1>
 <h1 class="h1">.........................................................</h1>

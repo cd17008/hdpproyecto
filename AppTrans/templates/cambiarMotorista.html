@@ -1,17 +1,17 @@
 {% extends 'base/base.html' %}
 
 {% block title %}
-Unidades de Transporte
+Cambio de Motorista
 {% endblock %}
 
 {% block header %}
-<h5>Seleccione la unidad para crear el registro</h5>
+<h5>Seleccione el nuevo motorista</h5>
 {% endblock %}
 
 {% block content %}
 	<form method="post">
 		{% csrf_token %}
 		{{ formulario.as_p }}
-		<button type="submit">Seleccionar</button>
+		<button class="btn btn-sm btn-primary" type="submit">Guardar</button>
 	</form>
 {% endblock %}

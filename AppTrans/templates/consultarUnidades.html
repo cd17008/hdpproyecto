@@ -29,7 +29,8 @@ Consultar Unidades
                 	<td>{{ unidades.nombre_mote }}</td>
                     <td>{{ unidades.motorista }}</td>
                     <td>
-                        <a href="{% url 'crearRegistro' unidades.id %}" class="btn btn-sm btn-primary">Crear Registro</a>
+                        <a href="{% url 'cambiarMotorista' unidades.id %}" class="btn btn-sm btn-primary">Cambiar Motorista</a>
+                        <a href="{% url 'eliminarUnidad' unidades.id %}" class="btn btn-sm btn-danger">Eliminar</a>
                     </td>
             	</tr>
             {% endfor %}

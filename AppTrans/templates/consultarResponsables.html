@@ -13,22 +13,24 @@ Consultar Motoristas
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Seleccion</th>
             <th>Código</th>
             <th>Nombres</th>
             <th>Apellidos</th>
-              <th>Dui</th>
+            <th>DUI</th>
+            <th>Selección</th>
         </tr>
     </thead>
     <tbody>
     {% if responsables %}
         {% for responsables in responsables %}
             <tr>
-                <td><input type="checkbox"></td>
-                <td>{{ responsables.cod_responsable }}</td>
+                <td>{{ responsables.obtener_cod }}</td>
                 <td>{{ responsables.nombres }}</td>
                 <td>{{ responsables.apellidos }}</td>
                 <td>{{ responsables.dui }}</td>
+                <td>
+                    <a href="{% url 'eliminarResponsable' responsables.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
             </tr>
         {% endfor %}
     {% else %}
@@ -36,6 +38,4 @@ Consultar Motoristas
     {% endif %}
     </tbody>
 </table>
-
-<button type="submit" class="btn btn-sm btn-primary">Asignar</button>
 {% endblock %}

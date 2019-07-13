@@ -12,7 +12,6 @@ Consultar Puntos de Control
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Selección</th>
             <th>Código</th>
             <th>Ubicación</th>
             <th>Responsable</th>
@@ -22,10 +21,9 @@ Consultar Puntos de Control
     {% if puntos %}
         {% for puntos in puntos %}
             <tr>
-                <td><input type="checkbox"></td>
                 <td>{{ puntos.cod_punto }}</td>
                 <td>{{ puntos.ubicacion }}</td>
-                <td>{{ puntos.responsable.cod_responsable }}</td>
+                <td>{{ puntos.responsable.nombres }} {{ puntos.responsable.apellidos }}</td>
             </tr>
         {% endfor %}
     {% else %}

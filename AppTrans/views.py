@@ -1,63 +1,84 @@
 from django.shortcuts import render, redirect
-from AppTrans.models import Motorista, RegistroLlegada, UnidadTransporte, PuntoControl
-from AppTrans.forms import FormularioRegistro, FormularioUnidades, FormularioPuntos
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import CreateView
+from django.core.urlresolvers import reverse_lazy
+from django.contrib import messages
+from AppTrans.models import Motorista, RegistroLlegada, UnidadTransporte, PuntoControl, ResponsablePunto
+from AppTrans.forms import UsuarioForm, RegistroForm, MotoristaForm, UnidadForm, FormularioPuntos, CambioMotoristaForm
 
 # Create your views here.
 
 def home(request):
 	return render(request, 'home.html');
 
+#Esta es una vista basada en clases
+class registrarUsuario(CreateView): #Hereda de la clase CreateView
+	model = User
+	template_name = "registrarUsuario.html"
+	form_class = UsuarioForm
+	success_url = reverse_lazy('home')
+
+#Todas las demás son vistas basadas en funciones
 def consultarMotoristas(request):
-	motoristas=Motorista.objects.all()
+	#Devuelve los Motoristas ordenados por id (ascendente)
+	motoristas=Motorista.objects.all().order_by('id')
 	return render(request, 'consultarMotoristas.html', {'motoristas': motoristas})
 
 def consultarPuntos(request):
-	puntos=PuntoControl.objects.all()
+	puntos=PuntoControl.objects.all().order_by('id')
 	return render(request, 'consultarPuntos.html', {'puntos':puntos})
 
 def consultarUnidades(request):
-	unidades=UnidadTransporte.objects.all()
+	unidades=UnidadTransporte.objects.all().order_by('id')
 	return render(request, 'consultarUnidades.html', {'unidades':unidades})
 
 def consultarRegistros(request):
-	registros=RegistroLlegada.objects.all()
+	registros=RegistroLlegada.objects.all().order_by('id')
 	return render(request, 'consultarRegistros.html', {'registros':registros})
 
 def crearRegistro(request):
 	#unidad = UnidadTransporte.objects.get(id=id)
 	if request.method == 'POST':
-		formulario = FormularioRegistro(request.POST)
+		formulario = RegistroForm(request.POST)
+		if formulario.is_valid():
+			formulario.save()
+			messages.success(request, 'Se guardó el registro')
+		return redirect('home')
+	else:
+		formulario = RegistroForm()
+
+	return render(request, 'crearRegistro.html', {'formulario':formulario})
+
+def verDetalleRegistro(request, id_registro):
+	registro = RegistroLlegada.objects.get(id=id_registro)
+	return render(request, 'verDetalleRegistro.html', {'registro':registro})
+
+def consultarResponsables(request):
+	responsables=ResponsablePunto.objects.all().order_by('id')
+	return render(request, 'consultarResponsables.html', {'responsables':responsables})
+
+def crearMotorista(request):
+	if request.method == 'POST':
+		formulario = MotoristaForm(request.POST)
 		if formulario.is_valid():
 			formulario.save()
 		return redirect('home')
 	else:
-		formulario = FormularioRegistro()
+		formulario = MotoristaForm()
 
-	return render(request, 'crearRegistro.html', {'formulario':formulario})
+	return render(request, 'crearMotorista.html', {'formulario':formulario})
 
-def verDetalleRegistro(request, id):
-	registro = RegistroLlegada.objects.get(id=id)
-	return render(request, 'verDetalleRegistro.html', {'registro':registro})
-
-def asignarMotorista(request, id):
-	motoristas = Motorista.objects.all()
-	unidad = UnidadTransporte.objects.get(id=id)
-	return render(request, 'asignarMotorista.html', {'motoristas':motoristas}, {'unidad':unidad}) 
-
-def seleccionarUnidad(request):
+def crearUnidad(request):
 	if request.method == 'POST':
-		formulario = FormularioUnidades(request.POST)
+		formulario = UnidadForm(request.POST)
 		if formulario.is_valid():
 			formulario.save()
-		return redirect('crearRegistro')
+		return redirect('home')
 	else:
-		formulario = FormularioUnidades()
+		formulario = UnidadForm()
 
-	return render(request, 'seleccionarUnidad.html', {'formulario':formulario})
-
-def consultarResponsables(request):
-	responsables=ResponsablePunto.objects.all()
-	return render(request, 'consultarResponsables.html', {'responsables':responsables})
+	return render(request, 'crearUnidad.html', {'formulario':formulario})
 
 def crearPuntos(request):
 	#unidad = UnidadTransporte.objects.get(id=id)
@@ -70,3 +91,46 @@ def crearPuntos(request):
 		formulario = FormularioPuntos()
 
 	return render(request, 'crearPuntos.html', {'formulario':formulario})
+
+def cambiarMotorista(request, id_unidad):
+	unidad = UnidadTransporte.objects.get(id=id_unidad)
+	if request.method == 'GET':
+		formulario = CambioMotoristaForm(instance=unidad)
+	else:
+		formulario = CambioMotoristaForm(request.POST, instance=unidad)
+		if formulario.is_valid():
+			formulario.save()
+		return redirect('consultarUnidades')
+	return render(request, 'cambiarMotorista.html', {'formulario':formulario})
+
+#def cambiarResponsable(request, id_punto):
+#	punto = ResponsablePunto.objects.get(id=id_punto)
+#	if request.method == 'GET':
+#		formulario = PuntoControlForm(instance=punto)
+#	else:
+#		formulario = PuntoControlForm(request.POST, instance=punto)
+#		if formulario.is_valid():
+#			formulario.save()
+#		return redirect('consultarPuntos')
+#	return render(request, 'crearPunto.html', {'formulario':formulario})
+
+def eliminarUnidad(request, id_unidad):
+	unidad = UnidadTransporte.objects.get(id=id_unidad)
+	if request.method == 'POST':
+		unidad.delete()
+		return redirect('consultarUnidades')
+	return render(request, 'eliminarUnidad.html', {'unidad':unidad})
+
+def eliminarMotorista(request, id_motorista):
+	motorista = Motorista.objects.get(id=id_motorista)
+	if request.method == 'POST':
+		motorista.delete()
+		return redirect('consultarMotoristas')
+	return render(request, 'eliminarMotorista.html', {'motorista':motorista})
+
+def eliminarResponsable(request, id_responsable):
+	responsable = ResponsablePunto.objects.get(id=id_responsable)
+	if request.method == 'POST':
+		responsable.delete()
+		return redirect('consultarResponsables')
+	return render(request, 'eliminarResponsable.html', {'responsable':responsable})

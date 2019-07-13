@@ -5,13 +5,13 @@ Nuevo Registro
 {% endblock %}
 
 {% block header %}
-<h5>Llene los campos para crear el Punto de Control</h5>
+<h5>Llene los campos para registrar nuevo usuario</h5>
 {% endblock %}
 
 {% block content %}
 	<form method="post">
 		{% csrf_token %}
-		{{ formulario.as_p }}
-		<button type="submit">Guardar</button>
+		{{ form.as_p }}
+		<button type="submit">Registrar</button>
 	</form>
 {% endblock %}

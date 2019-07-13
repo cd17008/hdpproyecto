@@ -13,20 +13,22 @@ Consultar Motoristas
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Selección</th>
             <th>Código</th>
             <th>Nombres</th>
             <th>Apellidos</th>
+            <th>Selección</th>
         </tr>
     </thead>
     <tbody>
     {% if motoristas %}
         {% for motoristas in motoristas %}
             <tr>
-                <td><input type="checkbox"></td>
                 <td>{{ motoristas.cod_motorista }}</td>
                 <td>{{ motoristas.nombres }}</td>
                 <td>{{ motoristas.apellidos }}</td>
+                <td>
+                    <a href="{% url 'eliminarMotorista' motoristas.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
             </tr>
         {% endfor %}
     {% else %}
@@ -34,6 +36,4 @@ Consultar Motoristas
     {% endif %}
     </tbody>
 </table>
-
-<button type="submit" class="btn btn-sm btn-primary">Asignar</button>
 {% endblock %}
