@@ -9,7 +9,7 @@ Consultar Motoristas
 {% endblock %}
 
 {% block content %}
-
+<a href="{% url 'crearResponsable' %}" class="btn btn-sm btn-primary">Crear Responsable</a>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -24,7 +24,7 @@ Consultar Motoristas
     {% if responsables %}
         {% for responsables in responsables %}
             <tr>
-                <td>{{ responsables.obtener_cod }}</td>
+                <td>{{ responsables.cod_responsable }}</td>
                 <td>{{ responsables.nombres }}</td>
                 <td>{{ responsables.apellidos }}</td>
                 <td>{{ responsables.dui }}</td>

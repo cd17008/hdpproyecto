@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Nuevo Responsable de Punto
+{% endblock %}
+
+{% block header %}
+<h5>Llene los campos para agregar un responsable de punto al sistema</h5>
+{% endblock %}
+
+{% block content %}
+	<form method="post">
+		{% csrf_token %}
+		{{ formulario.as_p }}
+		<button type="submit" class="btn btn-sm btn-primary">Guardar</button>
+	</form>
+{% endblock %}

@@ -34,7 +34,7 @@ class UnidadTransporte(models.Model):
 	ruta = models.CharField(max_length=5, null=False, default=0)
 	placa = models.CharField(max_length=15)
 	nombre_mote = models.CharField(max_length=20, default='No tiene nombre')
-	motorista = models.OneToOneField(Motorista, on_delete=models.CASCADE, default=1, null=True, blank=True)
+	motorista = models.OneToOneField(Motorista, on_delete=models.SET_NULL, default=1, null=True, blank=True)
 
 	def __str__(self):
 		return '%s %s' % (self.nombre_mote, self.placa)
@@ -45,7 +45,7 @@ class UnidadTransporte(models.Model):
 class PuntoControl(models.Model):
 	cod_punto = models.CharField(max_length=10)
 	ubicacion = models.CharField(max_length=60)
-	responsable = models.OneToOneField(ResponsablePunto, on_delete=models.CASCADE, null=True, blank=True)  
+	responsable = models.OneToOneField(ResponsablePunto, on_delete=models.SET_NULL, null=True, blank=True)  
 
 	def __str__(self):
 		return '%s' % (self.cod_punto)

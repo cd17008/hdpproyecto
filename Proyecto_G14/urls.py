@@ -27,24 +27,27 @@ urlpatterns = [
     url(r'^home/consultarPuntos/$', views.consultarPuntos, name='consultarPuntos'),
     url(r'^home/consultarUnidades/$', views.consultarUnidades, name='consultarUnidades'),
     url(r'^home/consultarRegistros/$', views.consultarRegistros, name='consultarRegistros'),
+    url(r'^home/consultarMotoristas/$', views.consultarMotoristas, name='consultarMotoristas'),
+    url(r'^home/consultarResponsables/$', views.consultarResponsables, name='consultarResponsables'),
+
     url(r'^home/crearRegistro/$', views.crearRegistro, name='crearRegistro'),
     url(r'^crearMotorista/$', views.crearMotorista, name='crearMotorista'),
     url(r'^crearUnidad/$', views.crearUnidad, name='crearUnidad'),
-    url(r'^home/consultarMotoristas/$', views.consultarMotoristas, name='consultarMotoristas'),
-    url(r'^home/consultarResponsables/$', views.consultarResponsables, name='consultarResponsables'),
+    url(r'^home/crearResponsable/$', views.crearResponsable, name='crearResponsable'),
     url(r'^crearPuntos/$', views.crearPuntos, name='crearPuntos'),
 
     url(r'^verDetalleRegistro/(?P<id_registro>\d+)/$', views.verDetalleRegistro, name='verDetalleRegistro'),
     url(r'^verDetalleResponsable/(?P<id_responsable>\d+)/$', views.verDetalleResponsable, name='verDetalleResponsable'),
     url(r'^verDetalleMotorista/(?P<id_motorista>\d+)/$', views.verDetalleMotorista, name='verDetalleMotorista'),
     url(r'^verDetalleUnidad/(?P<id_unidad>\d+)/$', views.verDetalleUnidad, name='verDetalleUnidad'),
-   
+    
     url(r'^cambiarMotorista/(?P<id_unidad>\d+)/$', views.cambiarMotorista, name='cambiarMotorista'),
     url(r'^editarPunto/(?P<id_punto>\d+)/$', views.editarPunto, name='editarPunto'),
     
     url(r'^eliminarUnidad/(?P<id_unidad>\d+)/$', views.eliminarUnidad, name='eliminarUnidad'),
     url(r'^eliminarMotorista/(?P<id_motorista>\d+)/$', views.eliminarMotorista, name='eliminarMotorista'),
     url(r'^eliminarResponsable/(?P<id_responsable>\d+)/$', views.eliminarResponsable, name='eliminarResponsable'),
-    url(r'^accounts/$', include('django.contrib.auth.urls')),
+    
+    url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^$',login, {'template_name':'index.html'},name='login'),
 ]
