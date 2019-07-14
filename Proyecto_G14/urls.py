@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^home/consultarRegistros/$', views.consultarRegistros, name='consultarRegistros'),
     url(r'^home/crearRegistro/$', views.crearRegistro, name='crearRegistro'),
     url(r'^home/crearMotorista/$', views.crearMotorista, name='crearMotorista'),
+    url(r'^home/crearResponsable/$', views.crearResponsable, name='crearResponsable'),
     url(r'^home/crearPuntos/$', views.crearPuntos, name='crearPuntos'),
     url(r'^home/crearUnidad/$', views.crearUnidad, name='crearUnidad'),
     url(r'^home/consultarMotoristas/$', views.consultarMotoristas, name='consultarMotoristas'),
@@ -38,6 +39,6 @@ urlpatterns = [
     url(r'^eliminarUnidad/(?P<id_unidad>\d+)/$', views.eliminarUnidad, name='eliminarUnidad'),
     url(r'^eliminarMotorista/(?P<id_motorista>\d+)/$', views.eliminarMotorista, name='eliminarMotorista'),
     url(r'^eliminarResponsable/(?P<id_responsable>\d+)/$', views.eliminarResponsable, name='eliminarResponsable'),
-    url(r'^accounts/$', include('django.contrib.auth.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^$',login, {'template_name':'index.html'},name='login'),
 ]

@@ -26,7 +26,8 @@ Consultar Unidades
                 <tr>
                 	<td>{{ unidades.id }}</td>
                 	<td>{{ unidades.placa }}</td>
-                	<td>{{ unidades.nombre_mote }}</td>
+                    <td>{{ unidades.ruta }}</td>
+                	
                     <td>{{ unidades.motorista }}</td>
                     <td>
                         <a href="{% url 'cambiarMotorista' unidades.id %}" class="btn btn-sm btn-primary">Cambiar Motorista</a>

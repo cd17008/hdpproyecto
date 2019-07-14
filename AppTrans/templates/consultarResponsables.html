@@ -17,6 +17,7 @@ Consultar Motoristas
             <th>Nombres</th>
             <th>Apellidos</th>
             <th>DUI</th>
+             <th>DIRECCION</th>
             <th>Selección</th>
         </tr>
     </thead>
@@ -24,10 +25,11 @@ Consultar Motoristas
     {% if responsables %}
         {% for responsables in responsables %}
             <tr>
-                <td>{{ responsables.obtener_cod }}</td>
+                <td>{{ responsables.cod_responsable }}</td>
                 <td>{{ responsables.nombres }}</td>
                 <td>{{ responsables.apellidos }}</td>
                 <td>{{ responsables.dui }}</td>
+                <td>{{ responsables.direccion }}</td>
                 <td>
                     <a href="{% url 'eliminarResponsable' responsables.id %}" class="btn btn-sm btn-danger">Eliminar</a>
                 </td>

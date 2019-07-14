@@ -9,6 +9,7 @@ class Motorista(models.Model):
 	nit = models.CharField(max_length=20)
 	nombres = models.CharField(max_length=30)
 	apellidos = models.CharField(max_length=30)
+	direccion = models.CharField(max_length=40,null=True)
 
 	def __str__(self):
 		return '%s %s' % (self.nombres, self.apellidos)
@@ -22,6 +23,7 @@ class ResponsablePunto(models.Model):
 	nit = models.CharField(max_length=20)
 	nombres = models.CharField(max_length=30)
 	apellidos = models.CharField(max_length=30)
+	direccion = models.CharField(max_length=40,null=True)
 
 	def __str__(self):
 		return '%s %s' % (self.nombres, self.apellidos)
@@ -35,6 +37,7 @@ class UnidadTransporte(models.Model):
 	placa = models.CharField(max_length=15)
 	nombre_mote = models.CharField(max_length=20, default='No tiene nombre')
 	motorista = models.OneToOneField(Motorista, on_delete=models.CASCADE, default=1, null=True, blank=True)
+
 
 	def __str__(self):
 		return '%s %s' % (self.nombre_mote, self.placa)

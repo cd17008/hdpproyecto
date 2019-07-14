@@ -5,7 +5,7 @@ from django.views.generic import CreateView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
 from AppTrans.models import Motorista, RegistroLlegada, UnidadTransporte, PuntoControl, ResponsablePunto
-from AppTrans.forms import UsuarioForm, RegistroForm, MotoristaForm, UnidadForm, FormularioPuntos, CambioMotoristaForm
+from AppTrans.forms import UsuarioForm, RegistroForm, MotoristaForm, ResponsableForm, UnidadForm, FormularioPuntos, CambioMotoristaForm
 
 # Create your views here.
 
@@ -68,6 +68,18 @@ def crearMotorista(request):
 		formulario = MotoristaForm()
 
 	return render(request, 'crearMotorista.html', {'formulario':formulario})
+
+def crearResponsable(request):
+	if request.method == 'POST':
+		formulario = ResponsableForm(request.POST)
+		if formulario.is_valid():
+			formulario.save()
+		return redirect('home')
+	else:
+		formulario = ResponsableForm()
+
+	return render(request, 'crearResponsable.html', {'formulario':formulario})
+
 
 def crearUnidad(request):
 	if request.method == 'POST':

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from AppTrans.models import RegistroLlegada, Motorista, UnidadTransporte, PuntoControl
+from AppTrans.models import RegistroLlegada, Motorista, UnidadTransporte, PuntoControl, ResponsablePunto
 
 #Formulario para crear usuario
 class UsuarioForm(UserCreationForm):
@@ -65,6 +65,7 @@ class MotoristaForm(forms.ModelForm):
 			'nit',
 			'nombres',
 			'apellidos',
+			'direccion',
 		]
 
 		labels = {
@@ -73,6 +74,7 @@ class MotoristaForm(forms.ModelForm):
 			'nit':'NIT',
 			'nombres':'Nombre(s)',
 			'apellidos':'Apellido(s)',
+			'direccion':'Direccion',
 		}
 
 		widgets = {
@@ -81,6 +83,38 @@ class MotoristaForm(forms.ModelForm):
 			'nit':forms.TextInput(attrs={'class':'form-control'}),
 			'nombres':forms.TextInput(attrs={'class':'form-control'}),
 			'apellidos':forms.TextInput(attrs={'class':'form-control'}),
+			'direccion':forms.TextInput(attrs={'class':'form-control'}),
+		}
+
+class ResponsableForm(forms.ModelForm):
+	class Meta:
+		model = ResponsablePunto
+
+		fields = [
+			'cod_responsable',
+			'dui',
+			'nit',
+			'nombres',
+			'apellidos',
+			'direccion',
+		]
+
+		labels = {
+			'cod_responsable':'Código',
+			'dui':'DUI',
+			'nit':'NIT',
+			'nombres':'Nombre(s)',
+			'apellidos':'Apellido(s)',
+			'direccion':'Direccion',
+		}
+
+		widgets = {
+			'cod_responsable':forms.TextInput(attrs={'class':'form-control'}),
+			'dui':forms.TextInput(attrs={'class':'form-control'}),
+			'nit':forms.TextInput(attrs={'class':'form-control'}),
+			'nombres':forms.TextInput(attrs={'class':'form-control'}),
+			'apellidos':forms.TextInput(attrs={'class':'form-control'}),
+			'direccion':forms.TextInput(attrs={'class':'form-control'}),
 		}
 
 #Formulario para registrar nueva unidad de Transporte
@@ -92,21 +126,21 @@ class UnidadForm(forms.ModelForm):
 			'cod_unidad',
 			'ruta',
 			'placa',
-			'nombre_mote',
+			'motorista',
 		]
 
 		labels = {
 			'cod_unidad':'Unidad',
 			'ruta':'Ruta',
 			'placa':'Placa',
-			'nombre_mote':'Nombre (Mote)',
+			'motorista':'Nombre (Mote)',
 		}
 
 		widgets = {
 			'cod_unidad':forms.TextInput(attrs={'class':'form-control'}),
 			'ruta':forms.TextInput(attrs={'class':'form-control'}),
 			'placa':forms.TextInput(attrs={'class':'form-control'}),
-			'nombre_mote':forms.TextInput(attrs={'class':'form-control'}),
+			'motorista':forms.Select(attrs={'class':'form-control'}),
 		}
 		
 #Formulario para crear puntos de control
