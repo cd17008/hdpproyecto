@@ -9,12 +9,14 @@ Consultar Puntos de Control
 {% endblock%}
 
 {% block content %}
+<a href="{% url 'crearPuntos' %}" class="btn btn-sm btn-primary">Crear Punto</a>
 <table class="table table-bordered">
     <thead>
         <tr>
             <th>Código</th>
             <th>Ubicación</th>
             <th>Responsable</th>
+            <th>Selección</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +26,9 @@ Consultar Puntos de Control
                 <td>{{ puntos.cod_punto }}</td>
                 <td>{{ puntos.ubicacion }}</td>
                 <td>{{ puntos.responsable.nombres }} {{ puntos.responsable.apellidos }}</td>
+                <td>
+                    <a href="{% url 'editarPunto' puntos.id %}" class="btn btn-sm btn-primary">Editar</a>
+                </td>
             </tr>
         {% endfor %}
     {% else %}
@@ -31,5 +36,4 @@ Consultar Puntos de Control
     {% endif %}
     </tbody>
 </table>
-
 {% endblock %}

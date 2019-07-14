@@ -66,7 +66,7 @@ class Migration(migrations.Migration):
                 ('ruta', models.IntegerField(default=0)),
                 ('placa', models.CharField(max_length=15)),
                 ('nombre_mote', models.CharField(default='No tiene nombre', max_length=20)),
-                ('motorista', models.OneToOneField(blank=True, default='No Asignado', null=True, on_delete=django.db.models.deletion.CASCADE, to='AppTrans.Motorista')),
+                ('motorista', models.OneToOneField(blank=True, default=1, null=True, on_delete=django.db.models.deletion.CASCADE, to='AppTrans.Motorista')),
             ],
         ),
         migrations.AddField(

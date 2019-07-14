@@ -29,6 +29,7 @@ Consultar Motoristas
                 <td>{{ responsables.apellidos }}</td>
                 <td>{{ responsables.dui }}</td>
                 <td>
+                    <a href="{% url 'verDetalleResponsable' responsables.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
                     <a href="{% url 'eliminarResponsable' responsables.id %}" class="btn btn-sm btn-danger">Eliminar</a>
                 </td>
             </tr>

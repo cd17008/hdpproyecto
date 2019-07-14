@@ -9,36 +9,33 @@ Consultar Unidades
 {% endblock %}
 
 {% block content %}
+<a href="{% url 'crearUnidad' %}" class="btn btn-sm btn-primary">Crear Unidad</a>
 
-    <table class="table table-bordered">
-        <thead>
-        	<tr>
-                <th>ID</th>
-				<th>Placa</th>
-				<th>Nombre Unidad</th>
-				<th>Motorista</th>
-                <th>Selección</th>
-			</tr>
-		</thead>
-		<tbody>
-        {% if unidades %}
-            {% for unidades in unidades %}
-                <tr>
-                	<td>{{ unidades.id }}</td>
-                	<td>{{ unidades.placa }}</td>
-                	<td>{{ unidades.nombre_mote }}</td>
-                    <td>{{ unidades.motorista }}</td>
-                    <td>
-                        <a href="{% url 'cambiarMotorista' unidades.id %}" class="btn btn-sm btn-primary">Cambiar Motorista</a>
-                        <a href="{% url 'eliminarUnidad' unidades.id %}" class="btn btn-sm btn-danger">Eliminar</a>
-                    </td>
-            	</tr>
-            {% endfor %}
-        {% else %}
-            <h4>No hay Unidades</h4>
-        {% endif %}
-    	</tbody>
-    </table>
-
-
+<table class="table table-bordered">
+    <thead>
+    	<tr>
+            <th>ID</th>
+			<th>Nombre Unidad</th>
+			<th>Motorista</th>
+            <th>Selección</th>
+		</tr>
+	</thead>
+	<tbody>
+    {% if unidades %}
+        {% for unidades in unidades %}
+            <tr>
+            	<td>{{ unidades.id }}</td>
+            	<td>{{ unidades.nombre_mote }}</td>
+                <td>{{ unidades.motorista }}</td>
+                <td>
+                    <a href="{% url 'verDetalleUnidad' unidades.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
+                    <a href="{% url 'eliminarUnidad' unidades.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+        	</tr>
+        {% endfor %}
+    {% else %}
+        <h4>No hay Unidades</h4>
+    {% endif %}
+	</tbody>
+</table>
 {% endblock %}

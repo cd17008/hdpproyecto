@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Detalle Responsable
+{% endblock%}
+
+{% block header %}
+Detalle del Responsable {{ responsable.obtener_cod }}
+{% endblock %}
+
+{% block content %}
+    <center>
+    	<div>
+	        <p><strong>Código: </strong>{{ responsable.obtener_cod }}</p>
+	        <p><strong>DUI: </strong>{{ responsable.dui }}</p>
+	        <p><strong>NIT: </strong>{{ responsable.nit }}</p>
+	        <p><strong>Nombres: </strong>{{ responsable.nombres }}</p>
+	        <p><strong>Apellidos: </strong>{{ responsable.apellidos }}</p>
+    	</div>
+    </center>
+{% endblock %}

@@ -13,14 +13,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='motorista',
-            name='direccion',
-        ),
-        migrations.RemoveField(
-            model_name='responsablepunto',
-            name='direccion',
-        ),
         migrations.AlterField(
             model_name='puntocontrol',
             name='responsable',

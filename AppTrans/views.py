@@ -37,6 +37,10 @@ def consultarRegistros(request):
 	registros=RegistroLlegada.objects.all().order_by('id')
 	return render(request, 'consultarRegistros.html', {'registros':registros})
 
+def consultarResponsables(request):
+	responsables=ResponsablePunto.objects.all().order_by('id')
+	return render(request, 'consultarResponsables.html', {'responsables':responsables})
+
 def crearRegistro(request):
 	#unidad = UnidadTransporte.objects.get(id=id)
 	if request.method == 'POST':
@@ -54,9 +58,17 @@ def verDetalleRegistro(request, id_registro):
 	registro = RegistroLlegada.objects.get(id=id_registro)
 	return render(request, 'verDetalleRegistro.html', {'registro':registro})
 
-def consultarResponsables(request):
-	responsables=ResponsablePunto.objects.all().order_by('id')
-	return render(request, 'consultarResponsables.html', {'responsables':responsables})
+def verDetalleResponsable(request, id_responsable):
+	responsable = ResponsablePunto.objects.get(id=id_responsable)
+	return render(request, 'verDetalleResponsable.html', {'responsable':responsable})
+
+def verDetalleMotorista(request, id_motorista):
+	motorista = Motorista.objects.get(id=id_motorista)
+	return render(request, 'verDetalleMotorista.html', {'motorista':motorista})
+
+def verDetalleUnidad(request, id_unidad):
+	unidad = UnidadTransporte.objects.get(id=id_unidad)
+	return render(request, 'verDetalleUnidad.html', {'unidad':unidad})
 
 def crearMotorista(request):
 	if request.method == 'POST':
@@ -83,7 +95,7 @@ def crearUnidad(request):
 def crearPuntos(request):
 	#unidad = UnidadTransporte.objects.get(id=id)
 	if request.method == 'POST':
-		formulario = FormularioRPuntos(request.POST)
+		formulario = FormularioPuntos(request.POST)
 		if formulario.is_valid():
 			formulario.save()
 		return redirect('home')
@@ -91,6 +103,18 @@ def crearPuntos(request):
 		formulario = FormularioPuntos()
 
 	return render(request, 'crearPuntos.html', {'formulario':formulario})
+
+def editarPunto(request, id_punto):
+	punto = PuntoControl.objects.get(id=id_punto)
+	if request.method == 'GET':
+		formulario = FormularioPuntos(instance=punto)
+	else:
+		formulario = FormularioPuntos(request.POST, instance=punto)
+		if formulario.is_valid():
+			formulario.save()
+		return redirect('consultarPuntos')
+	return render(request, 'crearPuntos.html', {'formulario':formulario})
+
 
 def cambiarMotorista(request, id_unidad):
 	unidad = UnidadTransporte.objects.get(id=id_unidad)

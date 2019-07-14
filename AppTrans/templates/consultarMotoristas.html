@@ -9,7 +9,7 @@ Consultar Motoristas
 {% endblock %}
 
 {% block content %}
-
+<a href="{% url 'crearMotorista' %}" class="btn btn-sm btn-primary">Crear Motorista</a>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -27,6 +27,7 @@ Consultar Motoristas
                 <td>{{ motoristas.nombres }}</td>
                 <td>{{ motoristas.apellidos }}</td>
                 <td>
+                     <a href="{% url 'verDetalleMotorista' motoristas.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
                     <a href="{% url 'eliminarMotorista' motoristas.id %}" class="btn btn-sm btn-danger">Eliminar</a>
                 </td>
             </tr>

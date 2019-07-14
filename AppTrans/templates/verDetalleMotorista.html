@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Detalle Motorista
+{% endblock%}
+
+{% block header %}
+Detalle del Motorista {{ motorista.obtener_cod }}
+{% endblock %}
+
+{% block content %}
+    <center>
+    	<div>
+	        <p><strong>Código: </strong>{{ motorista.obtener_cod }}</p>
+	        <p><strong>DUI: </strong>{{ motorista.dui }}</p>
+	        <p><strong>NIT: </strong>{{ motorista.nit }}</p>
+	        <p><strong>Nombres: </strong>{{ motorista.nombres }}</p>
+	        <p><strong>Apellidos: </strong>{{ motorista.apellidos }}</p>
+    	</div>
+    </center>
+{% endblock %}

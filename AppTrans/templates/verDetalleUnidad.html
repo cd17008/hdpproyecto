@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+Detalle Unidad
+{% endblock%}
+
+{% block header %}
+Detalle de la Unidad {{ unidad.obtener_cod }}
+{% endblock %}
+
+{% block content %}
+    <center>
+    	<div>
+	        <p><strong>Código: </strong>{{ unidad.obtener_cod }}</p>
+	        <p><strong>Ruta: </strong>{{ unidad.ruta }}</p>
+	        <p><strong>Placa: </strong>{{ unidad.placa }}</p>
+	        <p><strong>Nombre: </strong>{{ unidad.nombre_mote }}</p>
+	        <p><strong>Motorista: </strong>{{ unidad.motorista }}</p>
+    	</div>
+    </center>
+    <a href="{% url 'cambiarMotorista' unidad.id %}" class="btn btn-sm btn-primary">Cambiar Motorista</a>
+{% endblock %}

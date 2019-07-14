@@ -5,18 +5,20 @@ Detalle Registro
 {% endblock%}
 
 {% block header %}
-Datos del Registro {{ registro.id }}
+Detalle del Registro {{ registro.obtener_cod }}
 {% endblock %}
 
 {% block content %}
-    <div class="panel-body">
-        <p><strong>Código: </strong>{{ registro.obtener_cod }}</p>
-        <p><strong>Punto: </strong>{{ registro.punto }}</p>
-        <p><strong>Unidad: </strong>{{ registro.unidad }}</p>
-        <p><strong>Autor: </strong>{{ registro.responsable }}</p>
-        <p><strong>Fecha: </strong>{{ registro.fecha }}</p>
-        <p><strong>Hora: </strong>{{ registro.hora }}</p>
-        <p><strong>Pasajeros: </strong>{{ registro.num_pasajeros }}</p>
-        <p><strong>Dinero Entregado: </strong>{{ registro.cant_dinero }}</p>
-    </div>
+    <center>
+        <div>
+            <p><strong>Código: </strong>{{ registro.obtener_cod }}</p>
+            <p><strong>Punto: </strong>{{ registro.punto }}</p>
+            <p><strong>Unidad: </strong>{{ registro.unidad.obtener_cod }}</p>
+            <p><strong>Autor: </strong>{{ registro.responsable }}</p>
+            <p><strong>Fecha: </strong>{{ registro.fecha }}</p>
+            <p><strong>Hora: </strong>{{ registro.hora }}</p>
+            <p><strong>Pasajeros: </strong>{{ registro.num_pasajeros }}</p>
+            <p><strong>Dinero Entregado: </strong>${{ registro.cant_dinero }}</p>
+        </div>
+    </center>
 {% endblock %}

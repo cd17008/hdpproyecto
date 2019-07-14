@@ -8,17 +8,24 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'AppTrans/style.css' %}">
 </head>
 <body background="{% static 'AppTrans/imagen/otro.jpg' %}">
+	<div class="container">
+		{% block navbar %}
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  				<a class="navbar-brand" href="{% url 'home' %}">Home</a>
+           		<a class="navbar-brand" href="registrarUsuario">Registrarse</a>
+           		<a class="navbar-brand" href="iniciarSesion">Iniciar Sesión</a>
+            	<a class="navbar-brand" href="cerrarSesion">Cerrar Sesión</a>
+			</nav>
+		{% endblock %}
+	</div>
 	<br><br>
     <h1 class="h1">Sistema de Control de Unidades</h1>   
     <br> 
     	
     <div class="form-title-row">
     	<nav>                      
-   			<a href="crearMotorista">Nuevo Motorista</a>
 			<a href="crearRegistro" >Nuevo Registro</a>
-			<a href="crearPuntos">Nuevo Punto de control</a>
 			<a href="crearResponsable">Nuevo Responsable de Punto</a>
-			<a href="crearUnidad">Nueva Unidad de Transporte</a>
 			<br><br><br><br><br>
 			<a href="consultarRegistros">Registros de Llegada</a>
 			<a href="consultarPuntos">Puntos de Control</a>
