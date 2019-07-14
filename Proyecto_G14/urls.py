@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^home/crearRegistro/$', views.crearRegistro, name='crearRegistro'),
     url(r'^crearMotorista/$', views.crearMotorista, name='crearMotorista'),
     url(r'^crearUnidad/$', views.crearUnidad, name='crearUnidad'),
-    url(r'^home/crearResponsable/$', views.crearResponsable, name='crearResponsable'),
+    url(r'^crearResponsable/$', views.crearResponsable, name='crearResponsable'),
     url(r'^crearPuntos/$', views.crearPuntos, name='crearPuntos'),
 
     url(r'^verDetalleRegistro/(?P<id_registro>\d+)/$', views.verDetalleRegistro, name='verDetalleRegistro'),
