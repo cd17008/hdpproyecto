@@ -21,13 +21,13 @@ Consultar Puntos de Control
     </thead>
     <tbody>
     {% if puntos %}
-        {% for puntos in puntos %}
+        {% for punto in puntos %}
             <tr>
-                <td>{{ puntos.cod_punto }}</td>
-                <td>{{ puntos.ubicacion }}</td>
-                <td>{{ puntos.responsable.nombres }} {{ puntos.responsable.apellidos }}</td>
+                <td>{{ punto.obtener_cod }}</td>
+                <td>{{ punto.ubicacion }}</td>
+                <td>{{ punto.responsable.nombres }} {{ punto.responsable.apellidos }}</td>
                 <td>
-                    <a href="{% url 'editarPunto' puntos.id %}" class="btn btn-sm btn-primary">Editar</a>
+                    <a href="{% url 'editarPunto' punto.id %}" class="btn btn-sm btn-primary">Editar</a>
                 </td>
             </tr>
         {% endfor %}

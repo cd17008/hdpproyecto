@@ -22,14 +22,14 @@ Consultar Registros
 		</thead>
 		<tbody>
         {% if registros %}
-            {% for registros in registros %}
+            {% for registro in registros %}
                 <tr>
-                	<td>{{ registros.id }}</td>
-                	<td>{{ registros.unidad }}</td>
-                	<td>{{ registros.fecha }}</td>
-                    <td>{{ registros.responsable }}</td>
+                	<td>{{ registro.obtener_cod }}</td>
+                	<td>{{ registro.unidad }}</td>
+                	<td>{{ registro.fecha }}</td>
+                    <td>{{ registro.responsable }}</td>
                     <td>
-                        <a href="{% url 'verDetalleRegistro' registros.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
+                        <a href="{% url 'verDetalleRegistro' registro.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
                     </td>
             	</tr>
             {% endfor %}
@@ -39,4 +39,15 @@ Consultar Registros
     	</tbody>
     </table>
 
+    <center>
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-sm btn-primary">Anterior</a>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-sm btn-primary">Siguiente</a>
+            {% endif %}
+        </div>
+    </center>
 {% endblock %}

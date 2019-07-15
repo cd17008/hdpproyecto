@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 
 {% block title %}
-Consultar Motoristas
+Consultar Responsables
 {% endblock %}
 
 {% block header %}
@@ -22,15 +22,15 @@ Consultar Motoristas
     </thead>
     <tbody>
     {% if responsables %}
-        {% for responsables in responsables %}
+        {% for responsable in responsables %}
             <tr>
-                <td>{{ responsables.cod_responsable }}</td>
-                <td>{{ responsables.nombres }}</td>
-                <td>{{ responsables.apellidos }}</td>
-                <td>{{ responsables.dui }}</td>
+                <td>{{ responsable.obtener_cod }}</td>
+                <td>{{ responsable.nombres }}</td>
+                <td>{{ responsable.apellidos }}</td>
+                <td>{{ responsable.dui }}</td>
                 <td>
-                    <a href="{% url 'verDetalleResponsable' responsables.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
-                    <a href="{% url 'eliminarResponsable' responsables.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    <a href="{% url 'verDetalleResponsable' responsable.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
+                    <a href="{% url 'eliminarResponsable' responsable.id %}" class="btn btn-sm btn-danger">Eliminar</a>
                 </td>
             </tr>
         {% endfor %}

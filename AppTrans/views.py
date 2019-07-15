@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
+from django.views import generic
 from AppTrans.models import Motorista, RegistroLlegada, UnidadTransporte, PuntoControl, ResponsablePunto
 from AppTrans.forms import UsuarioForm, RegistroForm, MotoristaForm, ResponsableForm, UnidadForm, FormularioPuntos, CambioMotoristaForm
 
@@ -34,25 +35,17 @@ def consultarUnidades(request):
 	return render(request, 'consultarUnidades.html', {'unidades':unidades})
 
 def consultarRegistros(request):
-	registros=RegistroLlegada.objects.all().order_by('id')
+	registros = RegistroLlegada.objects.all().order_by('id')
 	return render(request, 'consultarRegistros.html', {'registros':registros})
+
+#class consultarRegistros(generic.ListView):
+#	queryset = RegistroLlegada.objects.all().order_by('id')
+#	template_name = "consultarRegistros.html"
+#	paginate_by =5
 
 def consultarResponsables(request):
 	responsables=ResponsablePunto.objects.all().order_by('id')
 	return render(request, 'consultarResponsables.html', {'responsables':responsables})
-
-def crearRegistro(request):
-	#unidad = UnidadTransporte.objects.get(id=id)
-	if request.method == 'POST':
-		formulario = RegistroForm(request.POST)
-		if formulario.is_valid():
-			formulario.save()
-			messages.success(request, 'Se guardó el registro')
-		return redirect('home')
-	else:
-		formulario = RegistroForm()
-
-	return render(request, 'crearRegistro.html', {'formulario':formulario})
 
 def verDetalleRegistro(request, id_registro):
 	registro = RegistroLlegada.objects.get(id=id_registro)
@@ -69,6 +62,18 @@ def verDetalleMotorista(request, id_motorista):
 def verDetalleUnidad(request, id_unidad):
 	unidad = UnidadTransporte.objects.get(id=id_unidad)
 	return render(request, 'verDetalleUnidad.html', {'unidad':unidad})
+
+def crearRegistro(request):
+	if request.method == 'POST':
+		formulario = RegistroForm(request.POST)
+		if formulario.is_valid():
+			formulario.save()
+			messages.success(request, 'Se guardó el registro')
+		return redirect('home')
+	else:
+		formulario = RegistroForm()
+
+	return render(request, 'crearRegistro.html', {'formulario':formulario})
 
 def crearMotorista(request):
 	if request.method == 'POST':
@@ -92,7 +97,6 @@ def crearResponsable(request):
 
 	return render(request, 'crearResponsable.html', {'formulario':formulario})
 
-
 def crearUnidad(request):
 	if request.method == 'POST':
 		formulario = UnidadForm(request.POST)
@@ -105,7 +109,6 @@ def crearUnidad(request):
 	return render(request, 'crearUnidad.html', {'formulario':formulario})
 
 def crearPuntos(request):
-	#unidad = UnidadTransporte.objects.get(id=id)
 	if request.method == 'POST':
 		formulario = FormularioPuntos(request.POST)
 		if formulario.is_valid():

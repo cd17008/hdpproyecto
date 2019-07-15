@@ -21,14 +21,14 @@ Consultar Motoristas
     </thead>
     <tbody>
     {% if motoristas %}
-        {% for motoristas in motoristas %}
+        {% for motorista in motoristas %}
             <tr>
-                <td>{{ motoristas.cod_motorista }}</td>
-                <td>{{ motoristas.nombres }}</td>
-                <td>{{ motoristas.apellidos }}</td>
+                <td>{{ motorista.obtener_cod }}</td>
+                <td>{{ motorista.nombres }}</td>
+                <td>{{ motorista.apellidos }}</td>
                 <td>
-                     <a href="{% url 'verDetalleMotorista' motoristas.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
-                    <a href="{% url 'eliminarMotorista' motoristas.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                     <a href="{% url 'verDetalleMotorista' motorista.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
+                    <a href="{% url 'eliminarMotorista' motorista.id %}" class="btn btn-sm btn-danger">Eliminar</a>
                 </td>
             </tr>
         {% endfor %}

@@ -22,14 +22,14 @@ Consultar Unidades
 	</thead>
 	<tbody>
     {% if unidades %}
-        {% for unidades in unidades %}
+        {% for unidad in unidades %}
             <tr>
-            	<td>{{ unidades.id }}</td>
-            	<td>{{ unidades.nombre_mote }}</td>
-                <td>{{ unidades.motorista }}</td>
+            	<td>{{ unidad.obtener_cod }}</td>
+            	<td>{{ unidad.nombre_mote }}</td>
+                <td>{{ unidad.motorista }}</td>
                 <td>
-                    <a href="{% url 'verDetalleUnidad' unidades.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
-                    <a href="{% url 'eliminarUnidad' unidades.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    <a href="{% url 'verDetalleUnidad' unidad.id %}" class="btn btn-sm btn-primary">Ver Detalle</a>
+                    <a href="{% url 'eliminarUnidad' unidad.id %}" class="btn btn-sm btn-danger">Eliminar</a>
                 </td>
         	</tr>
         {% endfor %}

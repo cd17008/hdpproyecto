@@ -23,7 +23,7 @@ from django.contrib.auth.views import login
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^home/$', views.home, name='home'),
-    url(r'^home/registrarUsuario/$', views.registrarUsuario.as_view(), name='registrarUsuario'),
+    url(r'^registrarUsuario/$', views.registrarUsuario.as_view(), name='registrarUsuario'),
     url(r'^home/consultarPuntos/$', views.consultarPuntos, name='consultarPuntos'),
     url(r'^home/consultarUnidades/$', views.consultarUnidades, name='consultarUnidades'),
     url(r'^home/consultarRegistros/$', views.consultarRegistros, name='consultarRegistros'),

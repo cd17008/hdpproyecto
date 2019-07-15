@@ -176,4 +176,3 @@ class CambioMotoristaForm(forms.ModelForm):
 		widgets = {
 			'motorista':forms.Select(attrs={'class':'form-control'}),
 		}
-
