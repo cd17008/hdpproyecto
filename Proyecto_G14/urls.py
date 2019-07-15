@@ -18,18 +18,19 @@ from django.contrib import admin
 from AppTrans import views
 
 from django.views.generic.base import TemplateView
-from django.contrib.auth.views import login
+from django.contrib.auth.views import login,logout_then_login
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url(r'^home/$', views.home, name='home'),
+    url(r'^home/$', login_required(views.home), name='home'),
     url(r'^home/registrarUsuario/$', views.registrarUsuario.as_view(), name='registrarUsuario'),
     url(r'^home/consultarPuntos/$', views.consultarPuntos, name='consultarPuntos'),
     url(r'^home/consultarUnidades/$', views.consultarUnidades, name='consultarUnidades'),
     url(r'^home/consultarRegistros/$', views.consultarRegistros, name='consultarRegistros'),
     url(r'^home/consultarMotoristas/$', views.consultarMotoristas, name='consultarMotoristas'),
     url(r'^home/consultarResponsables/$', views.consultarResponsables, name='consultarResponsables'),
-
+    url(r'^logout/',logout_then_login, name='logout' ),
     url(r'^home/crearRegistro/$', views.crearRegistro, name='crearRegistro'),
     url(r'^crearMotorista/$', views.crearMotorista, name='crearMotorista'),
     url(r'^crearUnidad/$', views.crearUnidad, name='crearUnidad'),
@@ -48,6 +49,6 @@ urlpatterns = [
     url(r'^eliminarMotorista/(?P<id_motorista>\d+)/$', views.eliminarMotorista, name='eliminarMotorista'),
     url(r'^eliminarResponsable/(?P<id_responsable>\d+)/$', views.eliminarResponsable, name='eliminarResponsable'),
     
-    url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^$',login, {'template_name':'index.html'},name='login'),
+   # url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/login/',login, {'template_name':'index.html'},name='login'),
 ]
