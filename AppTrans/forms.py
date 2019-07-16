@@ -31,7 +31,7 @@ class RegistroForm(forms.ModelForm):
 			'cod_registro',
 			'unidad',
 			'punto',
-			#'responsable',
+			'responsable',
 			'num_pasajeros',
 			'cant_dinero',
 		]
@@ -40,16 +40,16 @@ class RegistroForm(forms.ModelForm):
 			'cod_registro':'Código del Registro',
 			'unidad':'Unidad de Transporte',
 			'punto':'Punto de Control',
-			#'responsable':'Responsable de Punto',
+			'responsable':'Responsable de Punto',
 			'num_pasajeros':'Cantidad de pasajeros (opcional)',
-			'cant_dinero':'Cantidad de dinero',
+			'cant_dinero':'Cantidad de dinero(opcional)',
 		}
 
 		widgets = {
 			'cod_registro':forms.TextInput(attrs={'class':'form-control'}),
 			'unidad':forms.Select(attrs={'class':'form-control'}),
 			'punto':forms.Select(attrs={'class':'form-control'}),
-			#'responsable':forms.Select(attrs={'class':'form-control'}),
+			'responsable':forms.Select(attrs={'class':'form-control'}),
 			'num_pasajeros':forms.TextInput(attrs={'class':'form-control'}),
 			'cant_dinero':forms.TextInput(attrs={'class':'form-control'}),
 		}
@@ -118,6 +118,7 @@ class UnidadForm(forms.ModelForm):
 
 		fields = [
 			'cod_unidad',
+			'nombre_mote',
 			'ruta',
 			'placa',
 			'motorista',
@@ -125,6 +126,7 @@ class UnidadForm(forms.ModelForm):
 
 		labels = {
 			'cod_unidad':'Unidad',
+			'nombre_mote':'Nombre de la Unidad',
 			'ruta':'Ruta',
 			'placa':'Placa',
 			'motorista':'Nombre (Mote)',
@@ -132,6 +134,7 @@ class UnidadForm(forms.ModelForm):
 
 		widgets = {
 			'cod_unidad':forms.TextInput(attrs={'class':'form-control'}),
+			'nombre_mote':forms.TextInput(attrs={'class':'form-control'}),
 			'ruta':forms.TextInput(attrs={'class':'form-control'}),
 			'placa':forms.TextInput(attrs={'class':'form-control'}),
 			'motorista':forms.Select(attrs={'class':'form-control'}),
