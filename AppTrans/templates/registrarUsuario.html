@@ -1,17 +1,32 @@
-{% extends 'base/base.html' %}
 
-{% block title %}
-Nuevo Registro
-{% endblock %}
+{% load staticfiles %}
 
-{% block header %}
-<h5>Llene los campos para registrar nuevo usuario</h5>
-{% endblock %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Inicio</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'AppTrans/style.css' %}">
+</head>
+<body>
+<section class="wrapper">
+<nav>
+	<ul>
+  	<li class="ancla"><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'registrarUsuario' %}">Registrarse</a></li>
+    <li><a href="{% url 'login' %}">Cerrar Sesión</a></li>
+    </ul>
+</nav>
+
+<h1>Sistema de Control de Unidades</h1>   
+<h2>Registrar Usuarios</h2>  
+    <br> 
 
 {% block content %}
 	<form method="post">
 		{% csrf_token %}
 		{{ form.as_p }}
-		<button type="submit">Registrar</button>
+		<button class="btn btn-sm btn-primary" type="submit">Registrar</button>
 	</form>
 {% endblock %}
+</body>

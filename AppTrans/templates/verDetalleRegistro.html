@@ -1,24 +1,30 @@
-{% extends 'base/base.html' %}
+{% load staticfiles %}
 
-{% block title %}
-Detalle Registro
-{% endblock%}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Inicio</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'AppTrans/style.css' %}">
+</head>
+<body>
 
-{% block header %}
-Detalle del Registro {{ registro.obtener_cod }}
-{% endblock %}
+<h1>Detalles de Registro</h1>   
+<h2>Datos del Registro {{ registro.id }}</h2>  
+    <br> 
+
 
 {% block content %}
-    <center>
-        <div>
-            <p><strong>Código: </strong>{{ registro.obtener_cod }}</p>
-            <p><strong>Punto: </strong>{{ registro.punto }}</p>
-            <p><strong>Unidad: </strong>{{ registro.unidad.obtener_cod }}</p>
-            <p><strong>Autor: </strong>{{ registro.responsable }}</p>
-            <p><strong>Fecha: </strong>{{ registro.fecha }}</p>
-            <p><strong>Hora: </strong>{{ registro.hora }}</p>
-            <p><strong>Pasajeros: </strong>{{ registro.num_pasajeros }}</p>
-            <p><strong>Dinero Entregado: </strong>${{ registro.cant_dinero }}</p>
-        </div>
-    </center>
+    <form>
+        <p><strong>Código: </strong>{{ registro.obtener_cod }}</p>
+        <p><strong>Punto: </strong>{{ registro.punto }}</p>
+        <p><strong>Unidad: </strong>{{ registro.unidad }}</p>
+        <p><strong>Autor: </strong>{{ registro.responsable }}</p>
+        <p><strong>Fecha: </strong>{{ registro.fecha }}</p>
+        <p><strong>Hora: </strong>{{ registro.hora }}</p>
+        <p><strong>Pasajeros: </strong>{{ registro.num_pasajeros }}</p>
+        <p><strong>Dinero Entregado: </strong>{{ registro.cant_dinero }}</p>
+    </form>
 {% endblock %}
+</body>
+

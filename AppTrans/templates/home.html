@@ -1,5 +1,6 @@
-{% load staticfiles %}
 
+
+{% load staticfiles %}
 <!doctype html>
 <html lang="es">
 <head>
@@ -7,34 +8,40 @@
 	<title>Inicio</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'AppTrans/style.css' %}">
 </head>
-<body background="{% static 'AppTrans/imagen/fon.jpg' %}">
-	<div class="container">
-		{% block navbar %}
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  				<a class="navbar-brand" href="{% url 'home' %}">Home</a>
-           		<a class="navbar-brand" href="{% url 'registrarUsuario' %}">Registrarse</a>
-           		<a class="navbar-brand" href="iniciarSesion">Iniciar Sesión</a>
-            	<a class="navbar-brand" href="{% url 'login' %}">Cerrar Sesión</a>
-			</nav>
-		{% endblock %}
-	</div>
-	<br><br>
-    <h1 class="h1">Sistema de Control de Unidades</h1>   
-    <br> 
-    	
-    <div class="form-title-row">
-    	<nav>                      
-			<a href="crearRegistro" >Nuevo Registro</a>
-			<br><br><br><br><br>
-			<a href="consultarRegistros">Registros de Llegada</a>
-			<a href="consultarPuntos">Puntos de Control</a>
-			<a href="consultarMotoristas">Motoristas</a>
-			<a href="consultarResponsables">Responsables de Punto</a>
-			<a href="consultarUnidades">Unidades de Transporte</a>
+<body background="{% static 'AppTrans/imagen/otro.jpg' %}">
+<section class="wrspper">
+<nav>
+	<ul>
+  	<li class="ancla"><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'registrarUsuario' %}">Registrarse</a></li>
+    <li><a href="{% url 'login' %}">Cerrar Sesión</a></li>
+    </ul>
+</nav>
+	
+</section>
+<br><h1>Sistema de Control de Unidades</h1>
+<br><br><br><br><br>
+    	<section class="wrapper">
+    	<nav>  
+    	<ul>                      
+			<li><a href="crearRegistro" >Nuevo Registro</a></li>
+			
+			<li><a href="consultarRegistros">Registros de Llegada</a></li>
+			<li><a href="consultarPuntos">Puntos de Control</a></li>
+			<li><a href="consultarMotoristas">Motoristas</a></li>
+			<li><a href="consultarResponsables">Responsables de Punto</a></li>
+			<li><a href="consultarUnidades">Unidades de Transporte</a></li>
+		</ul>
 			<br><br><br><br><br>
   		</nav>
    </div> 
 <h1 class="h1">Herramientas de Productividad</h1>
 <h1 class="h1">.........................................................</h1>
 </body>
+
+
+
+
+
+
 
